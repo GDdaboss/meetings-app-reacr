@@ -35,12 +35,19 @@ class Calendar extends React.Component {
                         {
                             meetings.map(
                                 meeting => (
-                                    <div className="card" style={{margin: "0.5rem"}}>
+                                    <div className="card" style={{margin: "0.5rem 0rem"}}>
                                         <h5 className="card-header">{meeting.name}</h5>
                                         <div className="card-body">
                                             <h6 className="card-title">Timing: {meeting.startTime.hours}:{meeting.startTime.minutes} to {meeting.endTime.hours}:{meeting.endTime.minutes} </h6>
                                             <p className="card-text">{meeting.description}</p>
-                                            <button class="btn btn-danger">Excuse Yourself</button>
+                                            <button class="btn btn-danger" style={{margin: "0.5rem 0rem"}}>Excuse Yourself</button>
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Add participants" />
+                                                    <small id="emailHelp" class="form-text text-muted">Enter comma seperated email IDs</small>
+                                                    <button type="submit" class="btn btn-primary">Add</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 )
