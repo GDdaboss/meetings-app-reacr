@@ -27,9 +27,29 @@ class Calendar extends React.Component {
                 el = <div>Loading meetings for selected date</div>
                 break;
             case Calendar.Status.LOADED_CALENDAR:
+                // el = (
+                //     <ul className="list-group">{meetings.map( meeting => <li className="list-item">{meeting.name}, {meeting.startTime.hours}:{meeting.startTime.minutes} to {meeting.endTime.hours}:{meeting.endTime.minutes} </li> )}</ul>
+                // );
                 el = (
-                    <ul className="list-group">{meetings.map( meeting => <li className="list-item">{meeting.name}, {meeting.startTime.hours}:{meeting.startTime.minutes} to {meeting.endTime.hours}:{meeting.endTime.minutes} </li> )}</ul>
-                );
+                    <div className="container">
+                        {
+                            meetings.map(
+                                meeting => (
+                                    <div className="card" style={{margin: "0.5rem"}}>
+                                        <h5 className="card-header">{meeting.name}</h5>
+                                        <div className="card-body">
+                                            <h6 className="card-title">Timing: {meeting.startTime.hours}:{meeting.startTime.minutes} to {meeting.endTime.hours}:{meeting.endTime.minutes} </h6>
+                                            <p className="card-text">{meeting.description}</p>
+                                            <button class="btn btn-danger">Excuse Yourself</button>
+                                        </div>
+                                    </div>
+                                )
+                            )
+                        }
+                        
+                        
+                    </div>
+                )
                 break;
             case Calendar.Status.ERROR_LOADING_CALENDAR:
                 el = <div>{error.message}</div>
